@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bela" android:orientation="vertical" android:onClick="newGame">
+    <ImageView android:id="@+id/imageView1" android:layout_height="wrap_content" android:src="@drawable/naslov" android:layout_width="match_parent" android:layout_weight="2"></ImageView>
+    <ImageButton android:src="@drawable/novaigra" android:layout_height="wrap_content" android:id="@+id/imageButton1" android:background="@color/bela" android:layout_width="match_parent" android:layout_weight="1"></ImageButton>
+    <ImageButton android:src="@drawable/nastavitve" android:layout_height="wrap_content" android:id="@+id/imageButton2" android:background="@color/bela" android:layout_width="match_parent" android:layout_weight="1" android:onClick="settings"></ImageButton>
+    <ImageButton android:layout_height="wrap_content" android:id="@+id/imageButton3" android:src="@drawable/izhod" android:layout_width="match_parent" android:background="@color/bela" android:layout_weight="1" android:onClick="exit"></ImageButton>
+</LinearLayout>
