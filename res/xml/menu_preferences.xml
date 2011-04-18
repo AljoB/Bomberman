@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!-- Display settings -->
+
+<PreferenceCategory android:title="Settings">
+  <EditTextPreference android:key="Ime"
+  android:title="Player Name" 
+  android:dialogTitle="Player Name"/>
+</PreferenceCategory>
+</PreferenceScreen>
