@@ -6,24 +6,27 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 public class Main extends Activity {
     /** Called when the activity is first created. */
-
-	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        this.setRequestedOrientation(
+        		ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
     public void newGame(View v)
     {
-    
+    	Intent klic=new Intent(this,mapa.class);
+		this.startActivityForResult(klic, RESULT_CANCELED);
     }
     public void scoreboard(View v)
     {
@@ -65,9 +68,13 @@ public class Main extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-    	switch(requestCode)
+    	switch(resultCode)
     	{
-    				
+    		case RESULT_CANCELED:
+    			//Toast toast1 = Toast.makeText(getApplicationContext(), "Cancel  ", Toast.LENGTH_SHORT);
+				//toast1.show();
+    			break;
+    		
     	}
     }
     
@@ -78,7 +85,7 @@ public class Main extends Activity {
 		protected void onPreExecute()
 		{
 			dialogWait = ProgressDialog.show(Main.this, "",
-					"Downloading data. Please wait...", true);	
+					"Downloading scores. Please wait...", true);	
 		}
 
 		protected Long doInBackground(Integer...prviArgument)
