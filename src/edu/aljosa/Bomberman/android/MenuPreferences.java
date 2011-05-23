@@ -9,9 +9,11 @@ import java.io.IOException;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+import android.view.Window;
 import android.widget.Toast;
 
 
@@ -24,9 +26,8 @@ public class MenuPreferences extends PreferenceActivity {
 	public void onCreate(Bundle savedInstanceState) {
 	  super.onCreate(savedInstanceState);
 	  app = (GlobalniRazred) this.getApplication();
-	  addPreferencesFromResource(R.xml.menu_preferences);
-	  
 	}
+	@Override
 	 public void onResume() {
 			super.onResume();
 			

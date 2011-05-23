@@ -11,6 +11,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 public class Main extends Activity {
@@ -20,24 +21,23 @@ public class Main extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        this.setRequestedOrientation(
-        		ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        
+    }
+    public void prazno(View v)
+    {
+    	
     }
     public void newGame(View v)
     {
-    	Intent klic=new Intent(this,mapa.class);
-		this.startActivityForResult(klic, RESULT_CANCELED);
+    	Intent igra=new Intent();
+    	igra.setClass(this,NovaIgra.class);
+		this.startActivityForResult(igra, 0);
     }
     public void scoreboard(View v)
     {
-    	
-    	
     	MojTask mt = new MojTask();
-    	mt.execute(5000);
-    	
-    	//dialog.cancel();
-    	
-    	
+    	mt.execute(5000);	
    }
     public void settings(View v)
     {
