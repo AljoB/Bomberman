@@ -37,7 +37,6 @@ public class GlobalniRazred extends Application{
 			tmp = new Rezultat();
 			tmp.setName(c.getString(DBAdapterRezultat.POS_NAME));
 			tmp.setStevilo_poskusov(c.getInt(DBAdapterRezultat.POS_VALUE));
-			//tmp.setTezavnost(c.getString(DBAdapterRezultat.POS_TEZAVNOST));
 			tmp.setDbID(c.getLong(DBAdapterRezultat.POS__ID));
 			lista.add(tmp); 
 		}

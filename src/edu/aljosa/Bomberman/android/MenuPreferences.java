@@ -26,6 +26,7 @@ public class MenuPreferences extends PreferenceActivity {
 	public void onCreate(Bundle savedInstanceState) {
 	  super.onCreate(savedInstanceState);
 	  app = (GlobalniRazred) this.getApplication();
+	  addPreferencesFromResource(R.xml.menu_preferences);
 	}
 	@Override
 	 public void onResume() {
