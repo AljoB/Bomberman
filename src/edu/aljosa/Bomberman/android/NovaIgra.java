@@ -176,6 +176,7 @@ public class NovaIgra extends Activity{
 		    private long last_tick = 0;
 			private Rect sourceRect;
 			//private Rect destRect;
+			
 			public IzrisiPlosco(Context context) {
 				super(context);
 				//ozadje = new Bitmap(
@@ -187,8 +188,7 @@ public class NovaIgra extends Activity{
 				zajcek = BitmapFactory.decodeResource(getResources(), R.drawable.zajcek);
 				player = BitmapFactory.decodeResource(getResources(), R.drawable.stoje);
 				
-				sourceRect = new Rect(0, 0, 86, 132);
-				
+				sourceRect = new Rect(0, 0, 86, 132);	
 			}
 			
 			@Override
@@ -397,7 +397,10 @@ public class NovaIgra extends Activity{
 	            		postInvalidate();
 	                }
 	            }
+				
+				invalidate();
 			}
+		
 	    }
 }
 
