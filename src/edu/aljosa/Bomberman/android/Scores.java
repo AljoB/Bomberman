@@ -2,6 +2,7 @@ package edu.aljosa.Bomberman.android;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,6 +17,7 @@ import java.net.UnknownHostException;
 import android.R.string;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
@@ -23,6 +25,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Scores extends Activity{
 	private TextView[] g;
@@ -47,8 +50,10 @@ public class Scores extends Activity{
 	        		(TextView)findViewById(R.id.textView15),(TextView)findViewById(R.id.textView16),(TextView)findViewById(R.id.textView17),(TextView)findViewById(R.id.textView18),(TextView)findViewById(R.id.textView19),(TextView)findViewById(R.id.textView20)};
 	        
 	        
-	        GET mt = new GET();
-	    	mt.execute(5000);	
+	        GET gt = new GET();
+	    	gt.execute(5000);
+	        /*PUT mt = new PUT();
+	        mt.execute(2222);*/
 	    	
 	 }
 	 
@@ -82,7 +87,7 @@ public class Scores extends Activity{
 		protected void onPreExecute()
 		{
 			dialogWait = ProgressDialog.show(Scores.this, "",
-					"Downloading scores. Please wait...", true);	
+					"Podatki se prenasajo. Prosimo pocakajte trenutek...", true);	
 		}
 
 		protected Long doInBackground(Integer...prviArgument)
@@ -90,7 +95,7 @@ public class Scores extends Activity{
 			long totalSize=0;
 			int t1=prviArgument[0];
 			
-			String serverIpAddress="164.8.119.69";
+			String serverIpAddress="192.168.1.76";
 			try {
 				InetAddress serverAddr = InetAddress.getByName(serverIpAddress);
 				Socket socket = new Socket(serverAddr, 8080);
@@ -159,13 +164,20 @@ public class Scores extends Activity{
 			long totalSize=0;
 			int t1=prviArgument[0];
 			char[] ime = new char[30];
-			String serverIpAddress="164.8.119.69";
+			String serverIpAddress="164.8.119.40";
 			try {
 				FileReader fReader;
 		          try{
 		        	  fReader = new FileReader("data\\data\\edu.aljosa.Bomberman.android\\files\\PlayerName.txt");	        	  
 		        	  fReader.read(ime);
 		        	  fReader.close();
+		        	  Context context = getApplicationContext();
+		        	  CharSequence text = ime.toString();
+		        	  int duration = Toast.LENGTH_SHORT;
+
+		        	  Toast toast = Toast.makeText(context, text, duration);
+		        	  toast.show();
+		        	  
 		           }catch(Exception e){e.printStackTrace();}
 				InetAddress serverAddr = InetAddress.getByName(serverIpAddress);
 				Socket socket = new Socket(serverAddr, 8080);
@@ -173,7 +185,7 @@ public class Scores extends Activity{
 				if(connected) {
 					try {
 						PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
-						out.println("PUT TTT;8653");
+						out.println("PUT "+ime.toString()+";552145");
 						BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream())) ;
 						String podatki=null;
 						//a=in.readLine();

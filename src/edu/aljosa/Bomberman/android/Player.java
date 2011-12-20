@@ -10,48 +10,50 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 
 public class Player {
-	Timer animacija = new Timer();
-	private Bitmap levo;	
-	private Bitmap desno;	
-	private Bitmap gor;	
-	private Bitmap dol;	
-	private int gf;
-	private Rect sourceRect;
+	public static final int PLAYER_STANJE_MIRUJE = 4;
+	public static final int PLAYER_STANJE_HODI_LEVO = 4;
+	public static final int PLAYER_STANJE_HODI_DESNO = 2;
+	public static final int PLAYER_STANJE_HODI_GOR = 1;
+	public static final int PLAYER_STANJE_HODI_DOL = 3;
+	public int stanje;
 	public int x,y;
-	public Canvas c;
-	public int trenuten_frame;
-	public Player (int x,int y,Bitmap l, Bitmap d)
+
+	public int frame;
+	
+	public boolean animacijaTece;
+	
+	public Player (int x,int y)
 	{
-		gf = 17;
-		c = new Canvas();
-		trenuten_frame=0;
+		animacijaTece = false;
+		stanje = 2;
+		frame=0;
+		
 		this.x = x;
 		this.y = y;
-		levo = l;
-		desno = d;
-		sourceRect = new Rect(0, 0, 17, 27);
+
 	}
 	
 	public void premikLevo()
 	{
 		x--;
+		stanje=PLAYER_STANJE_HODI_LEVO;
 	}
 	public void premikDesno()
 	{
 		x++;
+		stanje = PLAYER_STANJE_HODI_DESNO;
 	}
 	public void premikGor()
 	{
 		y--;
+		stanje = PLAYER_STANJE_HODI_GOR;
 	}
 	public void premikDol()
 	{
 		y++;
+		stanje = PLAYER_STANJE_HODI_DOL;
 	}
-	public void namestiBombo()
-	{
-	
-	}
+
 	public boolean preveriTrk(int vrednost,int smer)
 	{
 		switch(smer)
@@ -59,7 +61,6 @@ public class Player {
 		case 1://Gor
 			if(vrednost == 2 && y>0)
 			{
-				
 				return false;
 			}
 			break;
@@ -87,30 +88,4 @@ public class Player {
 		}
 		return true;
 	}
-	public void draw(Canvas canvas) {
-		// where to draw the sprite
-		Rect destRect = new Rect(x+156, y+6, x + 17+156, y + 27+6);
-		c.drawBitmap(desno, sourceRect, destRect, null);	
-		
-		trenuten_frame++;
-		this.sourceRect.left = trenuten_frame * 17;
-		this.sourceRect.right = this.sourceRect.left + 17;
-	}
-	
-	/*
-	public void update(long gameTime) {
-		if (gameTime > frameTicker + framePeriod) {
-			frameTicker = gameTime;
-			// increment the frame
-			
-			trenuten_frame++;
-			//x+=2;
-			if (trenuten_frame==9) {
-				break;
-			}
-		}
-		// define the rectangle to cut out sprite
-		this.sourceRect.left = currentFrame * spriteWidth;
-		this.sourceRect.right = this.sourceRect.left + spriteWidth;
-	}*/
 }

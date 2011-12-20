@@ -14,7 +14,6 @@ public class RezultatListActivity extends ListActivity implements OnItemClickLis
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.rezultat_list_activity);
 		app = (GlobalniRazred) getApplication();
-		setListAdapter(app.rezultati);
 		this.getListView().setOnItemClickListener(this);
 
 	}
